@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1002274716131",
+    "firebase_url": "https://hangman-ceaf9.firebaseio.com",
+    "project_id": "hangman-ceaf9",
+    "storage_bucket": "hangman-ceaf9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1002274716131:android:14bbb5ba5605590f",
+        "android_client_info": {
+          "package_name": "com.put.hangman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1002274716131-qts23evvtfkd6f37spdh1ram5lubs0bs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.put.hangman",
+            "certificate_hash": "a747ca47a5234a4ad0661e5a55f25c72ec813970"
+          }
+        },
+        {
+          "client_id": "1002274716131-nhuaorl19j676tnonga1iv9hjmp3gb7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKA6ZDdd-i5QPpQYfZtauCNGy4Jz9e2hg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1002274716131-nhuaorl19j676tnonga1iv9hjmp3gb7r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
