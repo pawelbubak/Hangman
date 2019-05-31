@@ -10,6 +10,9 @@ import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import java.util.*
+import com.firebase.ui.auth.AuthMethodPickerLayout
+
+
 
 class MainActivity : AppCompatActivity() {
     private val REQUEST_CODE: Int = 1
@@ -46,11 +49,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showSignInOptions() {
+        val customLayout = AuthMethodPickerLayout.Builder(R.layout.activity_login)
+            .setEmailButtonId(R.id.email_button)
+            .setGoogleButtonId(R.id.google_button)
+            .build()
+
         startActivityForResult(
             AuthUI.getInstance()
                 .createSignInIntentBuilder()
+                .setAuthMethodPickerLayout(customLayout)
                 .setAvailableProviders(providers!!)
-                .setTheme(R.style.AppTheme)
+                .setTheme(R.style.Theme_AppCompat_Light_NoActionBar)
                 .build(),
             REQUEST_CODE
         )
