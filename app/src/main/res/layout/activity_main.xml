@@ -7,6 +7,214 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
+    <LinearLayout
+            android:id="@+id/header"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
 
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        <TextView
+                android:text="@string/score_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
+                android:textAlignment="textStart"
+                android:fontFamily="@font/raleway_bold"
+                android:textColor="#808080"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+        <TextView
+                android:text="@string/score"
+                android:id="@+id/score"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_weight="1.5"
+
+                android:textAlignment="textStart"
+                android:fontFamily="@font/raleway_bold"
+                android:textColor="#808080"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:text="@string/round_text"
+                android:id="@+id/round_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+
+                android:textAlignment="textStart"
+                android:fontFamily="@font/raleway_bold"
+                android:textColor="#808080"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+        <TextView
+                android:text="@string/score"
+                android:id="@+id/round"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_weight="1.5"
+                android:visibility="invisible"
+
+                android:textAlignment="textStart"
+                android:fontFamily="@font/raleway_bold"
+                android:textColor="#808080"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+        <Button
+                android:id="@+id/logout_button"
+                android:text="@string/logout"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:textSize="12sp"
+
+                android:background="@drawable/fui_idp_button_background_anonymous"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"/>
+    </LinearLayout>
+
+    <ImageView
+            app:srcCompat="@drawable/s0"
+            android:id="@+id/result_picture"
+            android:layout_width="192dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="0dp"
+            android:contentDescription="@string/app_name"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/header"/>
+
+    <Button
+            android:text="@string/question"
+            android:id="@+id/question"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="-10dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:textSize="13sp"
+            android:textColor="#808080"
+            android:textStyle="bold"
+            android:background="@drawable/fui_idp_button_background_google"
+            android:enabled="false"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/result_picture"/>
+
+    <LinearLayout
+            android:id="@+id/answers"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+
+            app:layout_constraintEnd_toEndOf="@id/question"
+            app:layout_constraintStart_toStartOf="@id/question"
+            app:layout_constraintTop_toBottomOf="@id/question">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <Button
+                    android:id="@+id/answer_1"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="2.5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/fui_idp_button_background_google"
+                    android:textSize="12sp"
+                    android:textColor="#808080"/>
+            <Button
+                    android:id="@+id/answer_2"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="2.5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/fui_idp_button_background_google"
+                    android:textSize="12sp"
+                    android:textColor="#808080"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <Button
+                    android:id="@+id/answer_3"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="2.5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/fui_idp_button_background_google"
+                    android:textSize="12sp"
+                    android:textColor="#808080"/>
+            <Button
+                    android:id="@+id/answer_4"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="2.5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/fui_idp_button_background_google"
+                    android:textSize="12sp"
+                    android:textColor="#808080"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+            android:id="@+id/start_button"
+            android:text="@string/start_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/fui_idp_button_background_twitter"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+
+            app:layout_constraintEnd_toEndOf="@id/question"
+            app:layout_constraintStart_toStartOf="@id/question"
+            app:layout_constraintBottom_toTopOf="@id/rank_button"/>
+
+    <Button
+            android:id="@+id/rank_button"
+            android:text="@string/ranking"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/fui_idp_button_background_twitter"
+            android:backgroundTint="#00FF7F"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+
+            app:layout_constraintEnd_toEndOf="@id/question"
+            app:layout_constraintStart_toStartOf="@id/question"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+            android:id="@+id/reset_button"
+            android:text="@string/reset_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/fui_idp_button_background_email"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:visibility="invisible"
+
+            app:layout_constraintEnd_toEndOf="@id/question"
+            app:layout_constraintStart_toStartOf="@id/question"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 </android.support.constraint.ConstraintLayout>

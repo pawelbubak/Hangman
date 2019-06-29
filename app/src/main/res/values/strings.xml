@@ -2,4 +2,12 @@
     <string name="app_name">Hangman</string>
     <string name="sign_in_with_email">Sign in with email</string>
     <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="score_text">Score:</string>
+    <string name="start_message">Let\'s start!</string>
+    <string name="question">Are you ready?</string>
+    <string name="logout">Logout</string>
+    <string name="ranking">Ranking</string>
+    <string name="score">0</string>
+    <string name="reset_text">I give up…</string>
+    <string name="round_text">Round:</string>
 </resources>
