@@ -10,4 +10,6 @@
     <string name="score">0</string>
     <string name="reset_text">I give up…</string>
     <string name="round_text">Round:</string>
+    <string name="get_back">Get back</string>
+    <string name="email">Email</string>
 </resources>

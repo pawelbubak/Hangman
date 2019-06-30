@@ -83,7 +83,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun getGlobalScore() {
         val userListener = object : ValueEventListener {
-
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
                     val rank = dataSnapshot.getValue(Ranking::class.java)
@@ -132,16 +131,11 @@ class MainActivity : AppCompatActivity() {
         showGameControls()
         getQuestions()
         result_picture.setImageResource(R.drawable.s0)
-
-        question.text = "Kto ujebie więcej osób?"
-        answer_1.text = "Irmina"
-        answer_2.text = "Rafał"
-        answer_3.text = "Arek"
-        answer_4.text = "Szymon"
     }
 
     private fun showRanking() {
-        println("Show ranking!")
+        val intent = Intent(this, com.put.hangman.RankingActivity::class.java)
+        startActivity(intent)
     }
 
     private fun giveUp() {
@@ -186,7 +180,7 @@ class MainActivity : AppCompatActivity() {
 
                 while (items.hasNext()) {
                     val currentItem = items.next()
-                    val map = currentItem.value as HashMap<*, *>
+                    val map = currentItem.value as HashMap<String, *>
                     val question = Question(
                         map["question"] as String,
                         map["options"] as Map<String, String>,

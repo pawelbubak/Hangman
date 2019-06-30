@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+    <LinearLayout
+            android:id="@+id/header"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        <TextView
+                android:text="@string/score"
+                android:id="@+id/position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+
+                android:textAlignment="textStart"
+                android:fontFamily="@font/raleway_bold"
+                android:textColor="#808080"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:text="@string/email"
+                android:id="@+id/email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="4"
+
+                android:textAlignment="textStart"
+                android:fontFamily="@font/raleway_bold"
+                android:textColor="#808080"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:text="@string/score"
+                android:id="@+id/points"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_weight="1"
+
+                android:textAlignment="textEnd"
+                android:fontFamily="@font/raleway_bold"
+                android:textColor="#808080"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
