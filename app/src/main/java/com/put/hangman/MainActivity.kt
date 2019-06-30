@@ -75,10 +75,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initProviders() {
-        providers = Arrays.asList(
-            AuthUI.IdpConfig.EmailBuilder().build(),
-            AuthUI.IdpConfig.GoogleBuilder().build()
-        )
+        providers = listOf(AuthUI.IdpConfig.EmailBuilder().build(), AuthUI.IdpConfig.GoogleBuilder().build())
     }
 
     private fun getGlobalScore() {
@@ -141,11 +138,13 @@ class MainActivity : AppCompatActivity() {
     private fun giveUp() {
         localScore = floor((localScore / 2).toDouble()).toInt()
         endGame()
+        score.text = globalScore.toString()
     }
 
     private fun endGame() {
         saveScore()
         showStartControls()
+        Toast.makeText(this, "You've earned $localScore points!", Toast.LENGTH_SHORT).show()
         localScore = 0
         localRound = 0
         mistake = 0
