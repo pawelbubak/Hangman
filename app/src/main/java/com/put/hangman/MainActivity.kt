@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     private var globalScore = 0
     private var localRound = 0
     private var localScore = 0
+    private var mistake = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -130,6 +131,7 @@ class MainActivity : AppCompatActivity() {
     private fun startGame() {
         showGameControls()
         getQuestions()
+        result_picture.setImageResource(R.drawable.s0)
 
         question.text = "Kto ujebie więcej osób?"
         answer_1.text = "Irmina"
@@ -152,6 +154,7 @@ class MainActivity : AppCompatActivity() {
         showStartControls()
         localScore = 0
         localRound = 0
+        mistake = 0
         question.text = getText(R.string.question)
     }
 
@@ -178,7 +181,6 @@ class MainActivity : AppCompatActivity() {
         val userListener = object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                if (dataSnapshot.exists()) {
                 val possibleQuestions = ArrayList<Question>()
                 val items = dataSnapshot.children.iterator()
 
@@ -249,9 +251,22 @@ class MainActivity : AppCompatActivity() {
                 endGame()
             }
         } else {
-            localScore = 0
-            endGame()
-            score.text = globalScore.toString()
+            mistake++
+            if (mistake < 4) {
+                localScore = floor((localScore / 2).toDouble()).toInt()
+                when (mistake) {
+                    1 -> result_picture.setImageResource(R.drawable.s1)
+                    2 -> result_picture.setImageResource(R.drawable.s2)
+                    3 -> result_picture.setImageResource(R.drawable.s3)
+                    4 -> result_picture.setImageResource(R.drawable.s4)
+                }
+                score.text = localScore.toString()
+            } else {
+                localScore = 0
+                endGame()
+                result_picture.setImageResource(R.drawable.s5)
+                score.text = globalScore.toString()
+            }
         }
     }
 }
