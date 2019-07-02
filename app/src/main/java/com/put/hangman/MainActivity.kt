@@ -1,6 +1,5 @@
 package com.put.hangman
 
-import android.app.Activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -8,15 +7,11 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.firebase.ui.auth.AuthUI
-import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.firebase.ui.auth.AuthMethodPickerLayout
 import com.google.firebase.database.*
 import com.put.hangman.model.Question
 import kotlinx.android.synthetic.main.activity_main.*
 import com.put.hangman.model.Ranking
-import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 import kotlin.math.floor
@@ -24,14 +19,11 @@ import kotlin.random.Random
 
 
 class MainActivity : AppCompatActivity() {
-    private val REQUEST_CODE: Int = 1
-
     private val mAuth = FirebaseAuth.getInstance()
     private var mDatabase = FirebaseDatabase.getInstance().reference
     private var rankRef: DatabaseReference? = null
     private var questionsRef: DatabaseReference? = null
 
-    private var providers: List<AuthUI.IdpConfig>? = null
     private var questions: ArrayList<Question>? = null
     private var globalScore = 0
     private var localRound = 0
@@ -52,30 +44,10 @@ class MainActivity : AppCompatActivity() {
         answer_3.setOnClickListener { checkAnswer("o3") }
         answer_4.setOnClickListener { checkAnswer("o4") }
 
-        initProviders()
 
-        showSignInOptions()
-    }
-
-    override
-    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE) {
-            val response: IdpResponse? = IdpResponse.fromResultIntent(data)
-            if (resultCode == Activity.RESULT_OK) {
-                val user: FirebaseUser? = mAuth.currentUser
-                Toast.makeText(this, user?.email, Toast.LENGTH_SHORT).show()
-                rankRef = FirebaseDatabase.getInstance().getReference("ranking").child(mAuth.currentUser!!.uid)
-                questionsRef = FirebaseDatabase.getInstance().getReference("questions")
-                getGlobalScore()
-            } else {
-                Toast.makeText(this, response?.error?.message, Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
-    private fun initProviders() {
-        providers = listOf(AuthUI.IdpConfig.EmailBuilder().build(), AuthUI.IdpConfig.GoogleBuilder().build())
+        rankRef = FirebaseDatabase.getInstance().getReference("ranking").child(mAuth.currentUser!!.uid)
+        questionsRef = FirebaseDatabase.getInstance().getReference("questions")
+        getGlobalScore()
     }
 
     private fun getGlobalScore() {
@@ -97,28 +69,11 @@ class MainActivity : AppCompatActivity() {
         rankRef?.addValueEventListener(userListener)
     }
 
-
-    private fun showSignInOptions() {
-        val customLayout = AuthMethodPickerLayout.Builder(R.layout.activity_login)
-            .setEmailButtonId(R.id.email_button)
-            .setGoogleButtonId(R.id.google_button)
-            .build()
-
-        startActivityForResult(
-            AuthUI.getInstance()
-                .createSignInIntentBuilder()
-                .setIsSmartLockEnabled(false)
-                .setAuthMethodPickerLayout(customLayout)
-                .setAvailableProviders(providers!!)
-                .setTheme(R.style.Theme_AppCompat_Light_NoActionBar)
-                .build(),
-            REQUEST_CODE
-        )
-    }
-
     private fun logout() {
         AuthUI.getInstance().signOut(this@MainActivity).addOnCompleteListener {
-            showSignInOptions()
+            val intent = Intent(this, com.put.hangman.LogoActivity::class.java)
+            startActivity(intent)
+            this.finish()
         }.addOnFailureListener {
             Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
         }
